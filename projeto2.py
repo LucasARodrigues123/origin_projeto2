@@ -28,9 +28,6 @@ class Pessoas:
         else:
             return 'Você está com Obesidade classe III'
 
-    def apresentar(self):
-        print(f'Eu me chamo {self.Nome} e tenho {self.Idade} anos.')
-
     def comparar_idade(self, outra_pessoa):
         if self.Idade < outra_pessoa.Idade:
             print(f'{self.Nome} é mais novo(a) do que {outra_pessoa.Nome}.')
@@ -39,14 +36,25 @@ class Pessoas:
         else:
             print(f'{self.Nome} tem a mesma idade que {outra_pessoa.Nome}.')
 
-# Exemplo de uso:
-pessoa1 = Pessoas("Maria", 1.65, 60, 25, "Branca", "Feminino")
-pessoa2 = Pessoas("João", 1.75, 80, 30, "Parda", "Masculino")
+    def apresentar(self):
+        print(f'Eu me chamo {self.Nome} e tenho {self.Idade} de idade.')
 
-print(pessoa1.Imc_Large())
-print(pessoa2.Imc_Large())
 
+# Objetos pessoa:
+pessoa1 = Pessoas("maria", 1.80, 60, 25, "Branca", "Feminino")
 pessoa1.apresentar()
-pessoa2.apresentar()
+if pessoa1.VerificarIdade():
+    print('é maior de Idade')
+else:
+    print('é menor de Idade')
+print(f"IMC: {pessoa1.Imc():.1f}")
+print(f'Categoria de Risco: {pessoa1.Imc_Large()}')
 
-pessoa1.comparar_idade(pessoa2)
+pessoa2 = Pessoas("Marcos", 1.90, 80, 35, "Pardo", "Masculino")
+pessoa2.apresentar()
+if pessoa2.VerificarIdade():
+    print('é maior de Idade')
+else:
+    print('é menor de Idade')
+print(f"IMC: {pessoa2.Imc():.1f}")
+print(f'Categoria de Risco: {pessoa2.Imc_Large()}')
