@@ -37,9 +37,21 @@ class Pessoas:
             print(f'{self.Nome} tem a mesma idade que {outra_pessoa.Nome}.')
 
     def apresentar(self):
-        print(f'Eu me chamo {self.Nome} e tenho {self.Idade} de idade.')
+        print(f' Eu me chamo: {self.Nome} e tenho {self.Idade} de idade.')
+
+class Estudo(Pessoas):
+    def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero, Emsino, Etinia): 
+        super().__init__(Nome, Altura, Peso, Idade, Cor, Genero)
+        self.Emsino = Emsino 
+        self.Etinia = Etinia
+
+    def curso_Emsino(self):
+        print(f'{self.Nome} Já cursou {self.Emsino} superior no continente Asia vindo de um país da {self.Etinia}')
 
 
+    def apresentar(self):
+        print(f'Olá me chamo: {self.Nome}, tenho {self.Idade} de idade e cursei Academia {self.Emsino}, e pretendo Viajar para {self.Etinia}, Para continuar meus Estudos ') 
+           
 # Objetos pessoa:
 pessoa1 = Pessoas("maria", 1.80, 60, 25, "Branca", "Feminino")
 pessoa1.apresentar()
@@ -50,6 +62,8 @@ else:
 print(f"IMC: {pessoa1.Imc():.1f}")
 print(f'Categoria de Risco: {pessoa1.Imc_Large()}')
 
+print("----")
+
 pessoa2 = Pessoas("Marcos", 1.90, 80, 35, "Pardo", "Masculino")
 pessoa2.apresentar()
 if pessoa2.VerificarIdade():
@@ -58,3 +72,19 @@ else:
     print('é menor de Idade')
 print(f"IMC: {pessoa2.Imc():.1f}")
 print(f'Categoria de Risco: {pessoa2.Imc_Large()}')
+
+print("---")
+
+pessoa3 = Estudo ('Gerson', 2.30, 100, 40, 'Negro','Masculino','egenharia','Asia')
+pessoa3.VerificarIdade()
+pessoa3.Imc_Large()
+pessoa3.curso_Emsino()
+pessoa3.apresentar()
+print('===')
+pessoa4 = Estudo  ('Marta', 2.30, 100, 40, 'Negro','Feminino','Musica','Europa')
+pessoa4.VerificarIdade()
+pessoa4.Imc_Large()
+pessoa4.curso_Emsino()
+pessoa4.apresentar()
+
+
