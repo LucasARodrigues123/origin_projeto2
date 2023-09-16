@@ -1,11 +1,13 @@
+import re
 class Pessoas:
-    def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero):
+    def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero, Data):
         self.Genero = Genero
         self.Cor = Cor
         self.Nome = Nome
         self.Altura = Altura
         self.Idade = Idade
         self.Peso = Peso
+        self.Data = Data
 
     def VerificarIdade(self):
         return self.Idade >= 18
@@ -37,23 +39,24 @@ class Pessoas:
             print(f'{self.Nome} tem a mesma idade que {outra_pessoa.Nome}.')
 
     def apresentar(self):
-        print(f' Eu me chamo: {self.Nome} e tenho {self.Idade} de idade.')
+        print(f' Eu me chamo: {self.Nome} e tenho {self.Idade} de idade naci no {self.Data}.')
 
 class Estudo(Pessoas):
-    def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero, Emsino, Etinia): 
-        super().__init__(Nome, Altura, Peso, Idade, Cor, Genero)
+    def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero, Emsino, Etinia, Data): 
+        super().__init__(Nome, Altura, Peso, Idade, Cor, Genero, Data)
         self.Emsino = Emsino 
         self.Etinia = Etinia
+        self.Data = Data
 
     def curso_Emsino(self):
-        print(f'{self.Nome} Já cursou {self.Emsino} superior no continente Asia vindo de um país da {self.Etinia}')
+        print(f'{self.Nome} Já cursou {self.Emsino} no continente Asia vindo de um país da {self.Etinia}')
 
 
     def apresentar(self):
-        print(f'Olá me chamo: {self.Nome}, tenho {self.Idade} de idade e cursei Academia {self.Emsino}, e pretendo Viajar para {self.Etinia}, Para continuar meus Estudos ') 
+        print(f'Olá me chamo: {self.Nome}, tenho {self.Idade} de idade  e  naceus {self.Data} epretende cursar Academia {self.Emsino}, e pretendo Viajar para {self.Etinia}, Para continuar meus Estudos ') 
            
 # Objetos pessoa:
-pessoa1 = Pessoas("maria", 1.80, 60, 25, "Branca", "Feminino")
+pessoa1 = Pessoas("maria", 1.80, 60, 25, "Branca", "Feminino","10/08/1998")
 pessoa1.apresentar()
 if pessoa1.VerificarIdade():
     print('é maior de Idade')
@@ -64,7 +67,7 @@ print(f'Categoria de Risco: {pessoa1.Imc_Large()}')
 
 print("----")
 
-pessoa2 = Pessoas("Marcos", 1.90, 80, 35, "Pardo", "Masculino")
+pessoa2 = Pessoas("Marcos", 1.90, 80, 35, "Pardo", "Masculino","12/05/1988")
 pessoa2.apresentar()
 if pessoa2.VerificarIdade():
     print('é maior de Idade')
@@ -73,18 +76,38 @@ else:
 print(f"IMC: {pessoa2.Imc():.1f}")
 print(f'Categoria de Risco: {pessoa2.Imc_Large()}')
 
-print("---")
 
-pessoa3 = Estudo ('Gerson', 2.30, 100, 40, 'Negro','Masculino','egenharia','Asia')
+print("---")
+pessoa3 = Estudo ('Gerson', 2.30, 100, 40, 'Negro','Masculino','egenharia','Asia', '20/03/1983')
 pessoa3.VerificarIdade()
 pessoa3.Imc_Large()
 pessoa3.curso_Emsino()
 pessoa3.apresentar()
 print('===')
-pessoa4 = Estudo  ('Marta', 2.30, 100, 40, 'Negro','Feminino','Musica','Europa')
+pessoa4 = Estudo  ('Marta', 2.30, 100, 47, 'Negro','Feminino' ,'Musica','Europa', '05/06/1976')
 pessoa4.VerificarIdade()
 pessoa4.Imc_Large()
 pessoa4.curso_Emsino()
 pessoa4.apresentar()
 
+while True:
+    userNome = str(input (f'Digite seu nome ?:'))
+    if re.match(r'^[aA-zZ_áÁ-úÚ\s\.]+$' , userNome):
+        break
+    else:
+        print('Nome invalido digite novamente')
+
+while True:
+    userAltura = (input(f'Digite  sua altura ?:'))
+    if re.match(r'^[1-9]|[.]|[0-1-9]+$', userAltura):
+        break    
+    else:
+        print('digite uma  altura valida em MM ou CM exemplo:1.50')
+    
+while True:
+    userData = input(f'Digite sua Data de nacimento desta formar Dd/Mm/Ano:')
+    if re.match(r'^(0[1-9]|1[0-9]2[0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$',userData):
+        break
+    else:
+        print('digite uma data valida dd/mm/ano')
 
