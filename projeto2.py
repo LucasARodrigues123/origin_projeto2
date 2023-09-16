@@ -1,5 +1,6 @@
-import re
+
 class Pessoas:
+    
     def __init__(self, Nome, Altura, Peso, Idade, Cor, Genero, Data):
         self.Genero = Genero
         self.Cor = Cor
@@ -8,7 +9,7 @@ class Pessoas:
         self.Idade = Idade
         self.Peso = Peso
         self.Data = Data
-
+ 
     def VerificarIdade(self):
         return self.Idade >= 18
 
@@ -89,9 +90,9 @@ pessoa4.VerificarIdade()
 pessoa4.Imc_Large()
 pessoa4.curso_Emsino()
 pessoa4.apresentar()
-
+import re    
 while True:
-    userNome = str(input (f'Digite seu nome ?:'))
+    userNome = (input (f'Digite seu nome ?:'))
     if re.match(r'^[aA-zZ_áÁ-úÚ\s\.]+$' , userNome):
         break
     else:
@@ -103,6 +104,20 @@ while True:
         break    
     else:
         print('digite uma  altura valida em MM ou CM exemplo:1.50')
+
+while True:
+    userIdade = input(f'Digite  sua idade apenas numeros:')
+    if re.match(r'^\d{2}$', userIdade):
+        break    
+    else:
+        print('digite uma  idade Valido')
+    
+while True:
+    userPeso = (input(f'Digite  seu peso:'))
+    if re.match(r'^\d{2}$', userPeso):
+        break    
+    else:
+        print('digite uma  Peso Valido')
     
 while True:
     userData = input(f'Digite sua Data de nacimento desta formar Dd/Mm/Ano:')
@@ -110,4 +125,15 @@ while True:
         break
     else:
         print('digite uma data valida dd/mm/ano')
+
+while True:
+    cpf = input('Digite seu cpf apenas Numeros  sem espasos ?')
+    if re.match(r'^\d{11}$',cpf):
+        break
+    else:
+        print('cpf invalido digite nova mente')
+
+pessoa5 = Pessoas(userNome, userAltura, userPeso, 26,"Branca", "Masculino" ,userData)
+pessoa5.apresentar()
+
 
